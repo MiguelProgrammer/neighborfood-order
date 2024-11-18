@@ -1,4 +1,4 @@
-<h2> Module Order of Neighborfood Application - Clean Architecture</h2>
+<h2>Module Order of Neighborfood Application - Clean Architecture</h2>
 
 <h3>Project aims to refactor the architecture used in the project <a href="https://github.com/MiguelProgrammer/neighborfood">Neighborfood - Ports and Adapters</h3><hr>
 
