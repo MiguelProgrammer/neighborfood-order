@@ -6,18 +6,16 @@ package br.com.techchallenge.fiap.neighborfood.infrastructure.gateways;
 
 import br.com.techchallenge.fiap.neighborfood.adapter.gateways.PedidoGateway;
 import br.com.techchallenge.fiap.neighborfood.adapter.presenter.AcompanhamentoResponse;
+import br.com.techchallenge.fiap.neighborfood.config.template.TemplateNeighborfood;
 import br.com.techchallenge.fiap.neighborfood.core.domain.dto.AcompanhamentoResponseDTO;
-import br.com.techchallenge.fiap.neighborfood.core.domain.enums.Categoria;
 import br.com.techchallenge.fiap.neighborfood.core.domain.enums.Status;
 import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Item;
 import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Pedido;
-import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Produto;
 import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.ItensRepository;
 import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.PedidoRepository;
 import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.ProdutoRepository;
 import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.ItemEntity;
 import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.PedidoEntity;
-import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.ProdutoEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -28,20 +26,21 @@ import java.util.Set;
 @Component
 public class PedidoRepositoryGateway implements PedidoGateway {
 
+    private final TemplateNeighborfood neighborfood;
     private final PedidoRepository pedidoRepository;
     private final ProdutoRepository produtoRepository;
     private final ItensRepository itensRepository;
 
-    public PedidoRepositoryGateway(PedidoRepository pedidoRepository, ProdutoRepository produtoRepository, ItensRepository itensRepository) {
+    public PedidoRepositoryGateway(TemplateNeighborfood neighborfood, PedidoRepository pedidoRepository, ProdutoRepository produtoRepository, ItensRepository itensRepository) {
+        this.neighborfood = neighborfood;
         this.pedidoRepository = pedidoRepository;
         this.produtoRepository = produtoRepository;
         this.itensRepository = itensRepository;
     }
 
     @Override
-    public Set<Produto> menuOpcionais(Categoria combo) {
-        Set<ProdutoEntity> byCategoria = produtoRepository.findByCategoria(combo);
-        return new Produto().setProdutosRequestFromSetEntity(byCategoria);
+    public Object menuOpcionais() {
+        return neighborfood.menu().getBody();
     }
 
     @Override
@@ -64,26 +63,18 @@ public class PedidoRepositoryGateway implements PedidoGateway {
         entity.setDataPedidoFim(pedido.getDataPedidoFim());
         entity.setStatus(pedido.getStatus());
         entity.setTotal(pedido.getTotal());
-        pedido.getItensProdutos().forEach(item -> {
-            entity.getItensProdutos().add(item.itemDomainFromItemEntity());
-        });
+        pedido.getItensProdutos().forEach(item -> entity.getItensProdutos().add(item.itemDomainFromItemEntity()));
 
         if (!pedido.getStatus().equals(Status.FINALIZADO)) {
 
             PedidoEntity save = pedidoRepository.saveAndFlush(entity);
-            save.getItensProdutos().forEach(item -> {
-                item.setIdPedido(save.getId());
-            });
+            save.getItensProdutos().forEach(item -> item.setIdPedido(save.getId()));
             updateResponse = pedidoRepository.saveAndFlush(save);
 
-            AcompanhamentoResponseDTO response =
-                    new AcompanhamentoResponse().pedidoEntityFromResponse(updateResponse);
-            return response;
+            return new AcompanhamentoResponse().pedidoEntityFromResponse(updateResponse);
         } else {
 
-            AcompanhamentoResponseDTO response = new AcompanhamentoResponse().pedidoEntityFromResponse(pedido.domainFromEntity());
-            return response;
-
+            return new AcompanhamentoResponse().pedidoEntityFromResponse(pedido.domainFromEntity());
         }
     }
 
@@ -171,9 +162,7 @@ public class PedidoRepositoryGateway implements PedidoGateway {
     @Override
     public List<PedidoEntity> pedidos() {
         List<PedidoEntity> pedidos = pedidoRepository.findAll();
-        pedidos.forEach(pedido -> {
-            pedido.setItensProdutos(itensRepository.findByIdPedido(pedido.getId()));
-        });
+        pedidos.forEach(pedido -> pedido.setItensProdutos(itensRepository.findByIdPedido(pedido.getId())));
         return pedidos;
     }
 }

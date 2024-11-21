@@ -4,38 +4,42 @@
 
 package br.com.techchallenge.fiap.neighborfood.core.usecase.pedido;
 
+import br.com.techchallenge.fiap.neighborfood.adapter.gateways.EstoqueGateway;
 import br.com.techchallenge.fiap.neighborfood.adapter.gateways.PedidoGateway;
+import br.com.techchallenge.fiap.neighborfood.adapter.gateways.UserGateway;
 import br.com.techchallenge.fiap.neighborfood.adapter.inbound.PedidoRequest;
+import br.com.techchallenge.fiap.neighborfood.config.exceptions.PedidoException;
 import br.com.techchallenge.fiap.neighborfood.core.domain.dto.AcompanhamentoResponseDTO;
-import br.com.techchallenge.fiap.neighborfood.core.domain.enums.Categoria;
+import br.com.techchallenge.fiap.neighborfood.core.domain.enums.Status;
 import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Item;
 import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Pedido;
 import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Produto;
+import br.com.techchallenge.fiap.neighborfood.core.domain.usuario.Cliente;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.*;
 
+import static br.com.techchallenge.fiap.neighborfood.core.domain.Finals.CLIENTE_NOT_FOUND;
 import static br.com.techchallenge.fiap.neighborfood.core.domain.Finals.ITENS_EM_FALLTA;
 
 @Slf4j
 @Component
 public class PedidoUseCase {
 
-
+    private final EstoqueGateway estoqueGateway;
+    private final UserGateway userGateway;
     private final PedidoGateway pedidoGateway;
 
-    public PedidoUseCase(PedidoGateway pedidoGateway) {
+    public PedidoUseCase(EstoqueGateway estoqueGateway, UserGateway userGateway, PedidoGateway pedidoGateway) {
+        this.estoqueGateway = estoqueGateway;
+        this.userGateway = userGateway;
         this.pedidoGateway = pedidoGateway;
     }
 
     public Object menuOpcionais() {
-        HashMap<Categoria, Set> menuItens = new HashMap<>();
-        for (Categoria opt : Categoria.values()) {
-            menuItens.put(opt, pedidoGateway.menuOpcionais(opt));
-        }
-        return menuItens;
+        return pedidoGateway.menuOpcionais();
     }
 
 
@@ -47,16 +51,16 @@ public class PedidoUseCase {
         Set<Produto> deleteProdutos = new HashSet<>();
         AcompanhamentoResponseDTO pedidoResponse = new AcompanhamentoResponseDTO();
 
-       // Cliente cliente = null;//(Cliente) userGateway.usuarioById(request.getIdCliente());
+        Cliente cliente = (Cliente) userGateway.usuarioById(request.getIdCliente());
 
-//        if (cliente.getId() == null) {
-//            log.info("CLIENTE NÃO ENCONTRADO/LOGADO");
-//        }
+        if (cliente.getId() == null) {
+            log.info("CLIENTE NÃO ENCONTRADO/LOGADO");
+        }
 
-        //pedido.setIdCliente(cliente.getId());
+        pedido.setIdCliente(cliente.getId());
         request.getItensPedido().forEach(item -> {
 
-            Produto prod = null;//estoqueGateway.findById(item.getIdProduto());
+            Produto prod = estoqueGateway.findById(item.getIdProduto());
 
             if (prod.getId() != null) {
                 pedido.setTotal(pedido.getTotal().add(prod.getPreco()));
@@ -81,16 +85,16 @@ public class PedidoUseCase {
         });
 
         pedido.setDataPedido(new Date());
-        //pedido.setStatus(Status.RECEBIDO);
+        pedido.setStatus(Status.RECEBIDO);
         pedido.setItensProdutos(itensPedido);
         pedido.setIdCliente(request.getIdCliente());
 
-        if (!pedido.getTotal().equals(BigDecimal.ZERO)) {
 
+        if (!pedido.getTotal().equals(BigDecimal.ZERO)) {
             //log.info(acompanhamentoGateway.sms(pedido.getStatus()));
             pedidoResponse = pedidoGateway.pedido(pedido);
 
-            //estoqueGateway.deleteAll(deleteProdutos);
+            estoqueGateway.deleteAll(deleteProdutos);
         } else {
 //            NotificacaoEntity notificacao = new NotificacaoEntity();
 //            notificacao.setDescricao(MESSAGE_ADM_ESTOQUE);
@@ -103,12 +107,12 @@ public class PedidoUseCase {
 
     public AcompanhamentoResponseDTO atualizarPedido(PedidoRequest pedido) {
         Set<Item> itens = pedidoGateway.findAllByIdPedido(pedido.getId());
-        //Cliente cliente = null;//(Cliente) userGateway.usuarioById(pedido.getIdCliente());
+        Cliente cliente = (Cliente) userGateway.usuarioById(pedido.getIdCliente());
         Set<Produto> produtos = new HashSet<>();
 
-//        if (cliente.getId() == null && produtos == null) {
-//            throw new PedidoException(CLIENTE_NOT_FOUND);
-//        }
+        if (cliente.getId() == null && produtos == null) {
+            throw new PedidoException(CLIENTE_NOT_FOUND);
+        }
 
         itens.forEach(item -> {
             Produto produto = new Produto();
@@ -121,7 +125,7 @@ public class PedidoUseCase {
             produtos.add(produto);
         });
 
-        //estoqueGateway.repoemEstoque(produtos);
+        estoqueGateway.repoemEstoque(produtos);
 
         pedidoGateway.removeItens(itens);
         Pedido pedidoRealizado = pedidoGateway.findByIdPedido(pedido.getId());
@@ -136,7 +140,7 @@ public class PedidoUseCase {
             pedidoGateway.commitUpdates(pedidoDTO.domainFromEntity());
             pedidoGateway.saveItens(item);
             pedidoGateway.commitUpdates(pedidoDTO.domainFromEntity());
-            //estoqueGateway.deleteByNome(item.getNome());
+            estoqueGateway.deleteByNome(item.getNome());
         });
 
         log.info("Pedido atualizado!");

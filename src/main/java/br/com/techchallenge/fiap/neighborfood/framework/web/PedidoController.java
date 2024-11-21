@@ -10,8 +10,10 @@ import br.com.techchallenge.fiap.neighborfood.adapter.controllers.Pedido;
 import br.com.techchallenge.fiap.neighborfood.adapter.inbound.PedidoRequest;
 import br.com.techchallenge.fiap.neighborfood.core.domain.dto.AcompanhamentoResponseDTO;
 import br.com.techchallenge.fiap.neighborfood.core.domain.dto.PedidoRequestDTO;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 public class PedidoController implements NeighborfoodApi {
@@ -30,6 +32,7 @@ public class PedidoController implements NeighborfoodApi {
      * or request inválida (status code 400)
      */
     @Override
+    @GetMapping(value = "/menu", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> menu() {
         return ResponseEntity.ok(pedidoController.menu());
     }
@@ -43,7 +46,11 @@ public class PedidoController implements NeighborfoodApi {
      *         or request inválida (status code 400)
      */
     @Override
-    public ResponseEntity<AcompanhamentoResponseDTO> order(PedidoRequestDTO pedidoRequest) {
+    @PostMapping(value = "/neighborfood/pedido",
+            produces = { "application/json" },
+            consumes = { "application/json" }
+    )
+    public ResponseEntity<AcompanhamentoResponseDTO> order(@RequestBody PedidoRequestDTO pedidoRequest) {
         AcompanhamentoResponseDTO response =
                 pedidoController.pedido(new PedidoRequest().dtoFromRequest(pedidoRequest));
         return ResponseEntity.ok(response);
