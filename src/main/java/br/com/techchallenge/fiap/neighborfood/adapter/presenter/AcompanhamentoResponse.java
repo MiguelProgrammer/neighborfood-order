@@ -80,8 +80,8 @@ public class AcompanhamentoResponse {
         });
         request.setItensPedido(itensPedido.stream().toList());
         response.setTotal(pedidoEntity.getTotal());
-        //this.convertPedidoRequest(request);
         response.setPedido(request);
+        response.setStatus(StatusPedidoDTO.fromValue(pedidoEntity.getStatus().toString()));
         request.setId(pedidoEntity.getId());
         return response;
     }

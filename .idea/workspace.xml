@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b98da9cc-1d07-4246-9de1-00a329614987" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/AcompanhamentoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/AcompanhamentoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +26,7 @@
         <option value="Dockerfile" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -78,6 +83,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.NeighborfoodApplication.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
@@ -114,8 +122,14 @@
       <recent name="C:\Users\MP-Silva\OneDrive\Documentos\Projetos Java\neighborfood-v2\src\main\java\br\com\techchallenge\fiap\neighborfood\config\exception\beans" />
       <recent name="C:\Users\MP-Silva\OneDrive\Documentos\Projetos Java\neighborfood\src\main\resources" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="br.com.techchallenge.fiap.neighborfood" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="br.com.techchallenge.fiap.neighborfood.adapter.gateways" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="br.com.techchallenge.fiap.neighborfood.adapter.gateways" />
@@ -312,17 +326,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
-          <line>143</line>
+          <line>142</line>
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
-          <line>146</line>
+          <line>145</line>
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
-          <line>148</line>
+          <line>147</line>
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -332,7 +346,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
-          <line>153</line>
+          <line>152</line>
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -509,6 +523,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/UserRepositoryGateway.java</url>
           <line>49</line>
           <option name="timeStamp" value="303" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoController.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="304" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

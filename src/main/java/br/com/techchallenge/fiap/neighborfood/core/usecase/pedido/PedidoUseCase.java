@@ -93,7 +93,6 @@ public class PedidoUseCase {
         if (!pedido.getTotal().equals(BigDecimal.ZERO)) {
             //log.info(acompanhamentoGateway.sms(pedido.getStatus()));
             pedidoResponse = pedidoGateway.pedido(pedido);
-
             estoqueGateway.deleteAll(deleteProdutos);
         } else {
 //            NotificacaoEntity notificacao = new NotificacaoEntity();

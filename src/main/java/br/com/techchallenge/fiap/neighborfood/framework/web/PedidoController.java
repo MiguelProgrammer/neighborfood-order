@@ -66,7 +66,11 @@ public class PedidoController implements NeighborfoodApi {
      * or request inválida (status code 400)
      */
     @Override
-    public ResponseEntity<AcompanhamentoResponseDTO> updateOrder(PedidoRequestDTO pedidoDTO) {
+    @PutMapping(value = "/neighborfood/pedido",
+            produces = { "application/json" },
+            consumes = { "application/json" }
+    )
+    public ResponseEntity<AcompanhamentoResponseDTO> updateOrder(@RequestBody PedidoRequestDTO pedidoDTO) {
         AcompanhamentoResponseDTO response = pedidoController.atualiza(new PedidoRequest().dtoFromRequest(pedidoDTO));
         return ResponseEntity.ok(response);
     }
