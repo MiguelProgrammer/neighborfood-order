@@ -47,15 +47,21 @@ public class UserRepositoryGateway implements UserGateway {
     }
 
     private Usuario getUsuarioPorId(Long idUsuario) {
-        Optional<ClienteEntity> cliente = clienteRepository.findById(idUsuario);
-        if (cliente.isEmpty()) {
-            Optional<AdminEntity> admin = admRepository.findById(idUsuario);
-            if (!admin.isEmpty()) {
-                return mapperUser.fromModel(admin.get());
-            }
-            return new Usuario();
-        }
-        return mapperUser.fromModel(cliente.get());
-    }
 
+        Optional<ClienteEntity> byId = clienteRepository.findById(idUsuario);
+
+        try {
+            if (byId.isEmpty()) {
+                Optional<AdminEntity> admin = admRepository.findById(idUsuario);
+                if (!admin.isEmpty()) {
+                    return mapperUser.fromModel(admin.get());
+                }
+                return new Usuario();
+            }
+        } catch (Exception e){
+            System.err.println(e);
+        }
+
+        return mapperUser.fromModel(byId.get());
+    }
 }

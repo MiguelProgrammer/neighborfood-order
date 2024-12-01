@@ -1,0 +1,174 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > ClienteEntity</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.user.entities</a>
+</div>
+
+<h1>Coverage Summary for Class: ClienteEntity (br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.user.entities)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ClienteEntity</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (6/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (7/10)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ClienteEntity$HibernateInstantiator$r7WUXU9C</td>
+  </tr>
+  <tr>
+    <td class="name">ClienteEntity$HibernateInstantiator$x4eOTLvS</td>
+  </tr>
+  <tr>
+    <td class="name">ClienteEntity$HibernateProxy$gnDykKAQ</td>
+  </tr>
+  <tr>
+    <td class="name">ClienteEntity$HibernateProxy$rvb3LB1X</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (6/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (7/10)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/*
+&nbsp; * Copyright (c) 2024. MiguelProgrammer
+&nbsp; */
+&nbsp;
+&nbsp;package br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.user.entities;
+&nbsp;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.PedidoEntity;
+&nbsp;import jakarta.persistence.*;
+&nbsp;import lombok.AllArgsConstructor;
+&nbsp;import lombok.Getter;
+&nbsp;import lombok.NoArgsConstructor;
+&nbsp;import lombok.Setter;
+&nbsp;
+&nbsp;import java.io.Serial;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.Set;
+&nbsp;
+&nbsp;@Getter
+<b class="fc">&nbsp;@Setter</b>
+&nbsp;@Entity
+<b class="fc">&nbsp;@NoArgsConstructor</b>
+<b class="nc">&nbsp;@AllArgsConstructor</b>
+&nbsp;@Table(name = &quot;cliente&quot;)
+&nbsp;@SequenceGenerator(name = &quot;cliente_sequence&quot;)
+&nbsp;public class ClienteEntity implements Serializable {
+&nbsp;
+&nbsp;    @Serial
+&nbsp;    private static final long serialVersionUID = 1L;
+&nbsp;
+&nbsp;    @Id
+&nbsp;    @Column(name = &quot;id&quot;)
+&nbsp;    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+<b class="nc">&nbsp;    private Long id;</b>
+&nbsp;
+&nbsp;    @Column(name = &quot;id_cliente&quot;)
+<b class="nc">&nbsp;    private Long idCliente;</b>
+&nbsp;
+&nbsp;    @Column(name = &quot;nome&quot;)
+<b class="fc">&nbsp;    private String nome;</b>
+&nbsp;
+&nbsp;    @Column(name = &quot;email&quot;)
+<b class="fc">&nbsp;    private String email;</b>
+&nbsp;
+&nbsp;    @Column(name = &quot;cpf&quot;)
+<b class="fc">&nbsp;    private String cpf;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Column(name = &quot;pedidos&quot;)</b>
+&nbsp;    @OneToMany(fetch = FetchType.LAZY, mappedBy = &quot;id&quot;)
+<b class="fc">&nbsp;    private Set&lt;PedidoEntity&gt; pedidos = new HashSet&lt;&gt;();</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-01 15:35</div>
+</div>
+</body>
+</html>

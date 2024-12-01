@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class TemplateNeighborfood {
 
-    @Value("${ngfood.module.main}")
+    @Value("${ngfood.module.main.menu}")
     private String moduleNeighborfood;
 
     @Autowired
@@ -26,7 +26,8 @@ public class TemplateNeighborfood {
     public ResponseEntity<?> menu(){
 
         try {
-            return restTemplate.getForEntity(moduleNeighborfood, String.class);
+            ResponseEntity<String> forEntity = restTemplate.getForEntity(moduleNeighborfood, String.class);
+            return forEntity;
         } catch (Exception e){
             log.error("Error -> {}", e);
         }

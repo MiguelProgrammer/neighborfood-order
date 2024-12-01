@@ -88,15 +88,4 @@ public class EstoqueUseCase {
         estoqueGateway.repoemEstoque(produtos);
     }
 
-    public Object findById(Long idProduto) {
-        return estoqueGateway.findById(idProduto);
-    }
-
-    public void deleteById(Long idProduto) {
-        estoqueGateway.deleteById(idProduto);
-    }
-
-    public void deleteAllExecute(Set<Produto> produtos) {
-        estoqueGateway.deleteAll(produtos);
-    }
 }

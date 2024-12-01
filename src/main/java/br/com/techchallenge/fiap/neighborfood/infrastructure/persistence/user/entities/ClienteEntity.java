@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,13 +25,16 @@ import java.util.Set;
 @SequenceGenerator(name = "cliente_sequence")
 public class ClienteEntity implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
-    //@Setter(AccessLevel.PROTECTED)
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
+    @Column(name = "id_cliente")
+    private Long idCliente;
 
     @Column(name = "nome")
     private String nome;

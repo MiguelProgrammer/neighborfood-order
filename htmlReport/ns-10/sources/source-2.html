@@ -1,0 +1,289 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > PedidoRepositoryGateway</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">br.com.techchallenge.fiap.neighborfood.infrastructure.gateways</a>
+</div>
+
+<h1>Coverage Summary for Class: PedidoRepositoryGateway (br.com.techchallenge.fiap.neighborfood.infrastructure.gateways)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PedidoRepositoryGateway</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (6/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (2/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    36%
+  </span>
+  <span class="absValue">
+    (27/75)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/*
+&nbsp; * Copyright (c) 2024. MiguelProgrammer
+&nbsp; */
+&nbsp;
+&nbsp;package br.com.techchallenge.fiap.neighborfood.infrastructure.gateways;
+&nbsp;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.adapter.gateways.PedidoGateway;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.adapter.presenter.AcompanhamentoResponse;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.config.template.TemplateNeighborfood;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.dto.AcompanhamentoResponseDTO;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.enums.Status;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Item;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Pedido;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.ItensRepository;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.PedidoRepository;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.ProdutoRepository;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.ItemEntity;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.PedidoEntity;
+&nbsp;import org.springframework.dao.InvalidDataAccessApiUsageException;
+&nbsp;import org.springframework.stereotype.Component;
+&nbsp;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
+&nbsp;import java.util.Set;
+&nbsp;
+&nbsp;@Component
+&nbsp;public class PedidoRepositoryGateway implements PedidoGateway {
+&nbsp;
+&nbsp;    private final TemplateNeighborfood neighborfood;
+&nbsp;    private final PedidoRepository pedidoRepository;
+&nbsp;    private final ProdutoRepository produtoRepository;
+&nbsp;    private final ItensRepository itensRepository;
+&nbsp;
+<b class="fc">&nbsp;    public PedidoRepositoryGateway(TemplateNeighborfood neighborfood, PedidoRepository pedidoRepository, ProdutoRepository produtoRepository, ItensRepository itensRepository) {</b>
+<b class="fc">&nbsp;        this.neighborfood = neighborfood;</b>
+<b class="fc">&nbsp;        this.pedidoRepository = pedidoRepository;</b>
+<b class="fc">&nbsp;        this.produtoRepository = produtoRepository;</b>
+<b class="fc">&nbsp;        this.itensRepository = itensRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Object menuOpcionais() {
+<b class="fc">&nbsp;        Object body = neighborfood.menu().getBody();</b>
+<b class="fc">&nbsp;        return body;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public AcompanhamentoResponseDTO pedido(Pedido pedido) {
+<b class="fc">&nbsp;        PedidoEntity entity = new PedidoEntity();</b>
+<b class="fc">&nbsp;        PedidoEntity updateResponse = new PedidoEntity();</b>
+&nbsp;
+<b class="pc">&nbsp;        if (pedido.getStatus().equals(Status.FINALIZADO)) {</b>
+<b class="nc">&nbsp;            Optional&lt;PedidoEntity&gt; p = pedidoRepository.findById(pedido.getId());</b>
+<b class="nc">&nbsp;            if (p.isPresent() &amp;&amp; pedido.getDataPedidoFim() == null) {</b>
+<b class="nc">&nbsp;                updateResponse = p.get();</b>
+<b class="nc">&nbsp;                pedido.setDataPedidoFim(p.get().getDataPedidoFim());</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        entity.setId(pedido.getId());</b>
+<b class="fc">&nbsp;        entity.setDataPedido(pedido.getDataPedido());</b>
+<b class="fc">&nbsp;        entity.setIdCliente(pedido.getIdCliente());</b>
+<b class="fc">&nbsp;        entity.setDataPedido(pedido.getDataPedido());</b>
+<b class="fc">&nbsp;        entity.setDataPedidoFim(pedido.getDataPedidoFim());</b>
+<b class="fc">&nbsp;        entity.setStatus(pedido.getStatus());</b>
+<b class="fc">&nbsp;        entity.setTotal(pedido.getTotal());</b>
+<b class="fc">&nbsp;        pedido.getItensProdutos().forEach(item -&gt; entity.getItensProdutos().add(item.itemDomainFromItemEntity()));</b>
+&nbsp;
+<b class="pc">&nbsp;        if (!pedido.getStatus().equals(Status.FINALIZADO)) {</b>
+&nbsp;
+<b class="fc">&nbsp;            PedidoEntity save = pedidoRepository.saveAndFlush(entity);</b>
+<b class="fc">&nbsp;            save.getItensProdutos().forEach(item -&gt; item.setIdPedido(save.getId()));</b>
+<b class="fc">&nbsp;            updateResponse = pedidoRepository.saveAndFlush(save);</b>
+&nbsp;
+<b class="fc">&nbsp;            return new AcompanhamentoResponse().pedidoEntityFromResponse(updateResponse);</b>
+&nbsp;        } else {
+&nbsp;
+<b class="nc">&nbsp;            return new AcompanhamentoResponse().pedidoEntityFromResponse(pedido.domainFromEntity());</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public AcompanhamentoResponseDTO atualizarPedido(Pedido pedido) {
+<b class="fc">&nbsp;        PedidoEntity updateResponse = pedidoRepository.saveAndFlush(pedido.domainFromEntity());</b>
+<b class="fc">&nbsp;        return new AcompanhamentoResponse().pedidoEntityFromResponse(updateResponse);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Pedido commitUpdates(PedidoEntity pedidoEntity) {
+<b class="nc">&nbsp;        PedidoEntity entity = pedidoRepository.findById(pedidoEntity.getId()).get();</b>
+<b class="nc">&nbsp;        entity = pedidoEntity;</b>
+<b class="nc">&nbsp;        pedidoRepository.save(entity);</b>
+<b class="nc">&nbsp;        return new Pedido().entityFromDomain(entity);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void saveItens(Item item) {
+<b class="nc">&nbsp;        itensRepository.saveAndFlush(new Pedido().itemDomainFromItemEntity(item));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void removeItens(Set&lt;Item&gt; itens) {
+<b class="fc">&nbsp;        itens.forEach(item -&gt; {</b>
+<b class="fc">&nbsp;            itensRepository.deleteById(item.getId());</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Set&lt;Item&gt; findAllById(Long id) {
+<b class="nc">&nbsp;        Set&lt;ItemEntity&gt; itens = itensRepository.findByIdPedido(id);</b>
+<b class="nc">&nbsp;        Set&lt;Item&gt; itensDomain = new HashSet&lt;&gt;();</b>
+<b class="nc">&nbsp;        itens.forEach(item -&gt; {</b>
+<b class="nc">&nbsp;            Item produto = new Item();</b>
+<b class="nc">&nbsp;            produto.setId(item.getId());</b>
+<b class="nc">&nbsp;            produto.setIdPedido(item.getIdPedido());</b>
+<b class="nc">&nbsp;            produto.setIdProduto(item.getIdProduto());</b>
+<b class="nc">&nbsp;            produto.setNome(item.getNome());</b>
+<b class="nc">&nbsp;            produto.setDescricao(item.getDescricao());</b>
+<b class="nc">&nbsp;            produto.setCategoria(item.getCategoria());</b>
+<b class="nc">&nbsp;            produto.setPreco(item.getPreco());</b>
+<b class="nc">&nbsp;            produto.setImg(item.getImg());</b>
+<b class="nc">&nbsp;            itensDomain.add(produto);</b>
+&nbsp;        });
+<b class="nc">&nbsp;        return itensDomain;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Set&lt;Item&gt; findAllByIdPedido(Long id) {
+<b class="nc">&nbsp;        Set&lt;Item&gt; produtos = new HashSet&lt;&gt;();</b>
+<b class="nc">&nbsp;        Set&lt;ItemEntity&gt; byIdPedido = itensRepository.findByIdPedido(id);</b>
+<b class="nc">&nbsp;        byIdPedido.forEach(item -&gt; {</b>
+<b class="nc">&nbsp;            Item produto = new Item();</b>
+<b class="nc">&nbsp;            produto.setId(item.getId());</b>
+<b class="nc">&nbsp;            produto.setIdPedido(item.getIdPedido());</b>
+<b class="nc">&nbsp;            produto.setIdProduto(item.getIdProduto());</b>
+<b class="nc">&nbsp;            produto.setNome(item.getNome());</b>
+<b class="nc">&nbsp;            produto.setDescricao(item.getDescricao());</b>
+<b class="nc">&nbsp;            produto.setCategoria(item.getCategoria());</b>
+<b class="nc">&nbsp;            produto.setPreco(item.getPreco());</b>
+<b class="nc">&nbsp;            produto.setImg(item.getImg());</b>
+<b class="nc">&nbsp;            produtos.add(produto);</b>
+&nbsp;        });
+<b class="nc">&nbsp;        return produtos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Pedido findByIdPedido(Long id) {
+<b class="nc">&nbsp;        Optional&lt;PedidoEntity&gt; pedidoRepositoryById = pedidoRepository.findById(id);</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            pedidoRepositoryById.get().setItensProdutos(itensRepository.findByIdPedido(id));</b>
+<b class="nc">&nbsp;        } catch (InvalidDataAccessApiUsageException e) {</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        return new Pedido().entityFromDomain(pedidoRepositoryById.get());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Pedido findById(Long id) {
+<b class="nc">&nbsp;        PedidoEntity entity = pedidoRepository.findById(id).get();</b>
+<b class="nc">&nbsp;        entity.setItensProdutos(itensRepository.findByIdPedido(entity.getId()));</b>
+<b class="nc">&nbsp;        return new Pedido().entityFromDomain(entity);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;PedidoEntity&gt; pedidos() {
+<b class="nc">&nbsp;        List&lt;PedidoEntity&gt; pedidos = pedidoRepository.findAll();</b>
+<b class="nc">&nbsp;        pedidos.forEach(pedido -&gt; pedido.setItensProdutos(itensRepository.findByIdPedido(pedido.getId())));</b>
+<b class="nc">&nbsp;        return pedidos;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-01 15:35</div>
+</div>
+</body>
+</html>

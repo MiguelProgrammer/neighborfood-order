@@ -6,6 +6,7 @@ package br.com.techchallenge.fiap.neighborfood.adapter.presenter;
 
 import br.com.techchallenge.fiap.neighborfood.core.domain.usuario.Admin;
 import br.com.techchallenge.fiap.neighborfood.core.domain.usuario.Cliente;
+import br.com.techchallenge.fiap.neighborfood.core.domain.usuario.Usuario;
 import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.user.entities.AdminEntity;
 import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.user.entities.ClienteEntity;
 
@@ -55,5 +56,14 @@ public class MapperUser {
         this.entityAdmin.setCpf(adminRequest.getCpf());
         this.entityAdmin.setEmail(adminRequest.getEmail());
         return entityAdmin;
+    }
+
+    public Cliente fromCliente(Usuario usuario) {
+        Cliente cliente = new Cliente();
+        cliente.setNome(usuario.getNome());
+        cliente.setCpf(usuario.getCpf());
+        cliente.setEmail(usuario.getEmail());
+        cliente.setNotificacao(usuario.getNotificacao());
+        return cliente;
     }
 }

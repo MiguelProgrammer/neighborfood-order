@@ -1,0 +1,282 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > PedidoUseCase</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">br.com.techchallenge.fiap.neighborfood.core.usecase.pedido</a>
+</div>
+
+<h1>Coverage Summary for Class: PedidoUseCase (br.com.techchallenge.fiap.neighborfood.core.usecase.pedido)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PedidoUseCase</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    55.6%
+  </span>
+  <span class="absValue">
+    (5/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    18.9%
+  </span>
+  <span class="absValue">
+    (14/74)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/*
+&nbsp; * Copyright (c) 2024. MiguelProgrammer
+&nbsp; */
+&nbsp;
+&nbsp;package br.com.techchallenge.fiap.neighborfood.core.usecase.pedido;
+&nbsp;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.adapter.gateways.EstoqueGateway;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.adapter.gateways.PedidoGateway;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.adapter.gateways.UserGateway;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.adapter.inbound.PedidoRequest;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.config.exceptions.PedidoException;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.dto.AcompanhamentoResponseDTO;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.enums.Status;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Item;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Pedido;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Produto;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.usuario.Cliente;
+&nbsp;import lombok.extern.slf4j.Slf4j;
+&nbsp;import org.springframework.stereotype.Component;
+&nbsp;
+&nbsp;import java.math.BigDecimal;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;import static br.com.techchallenge.fiap.neighborfood.core.domain.Finals.CLIENTE_NOT_FOUND;
+&nbsp;import static br.com.techchallenge.fiap.neighborfood.core.domain.Finals.ITENS_EM_FALLTA;
+&nbsp;
+<b class="fc">&nbsp;@Slf4j</b>
+&nbsp;@Component
+&nbsp;public class PedidoUseCase {
+&nbsp;
+&nbsp;    private final EstoqueGateway estoqueGateway;
+&nbsp;    private final UserGateway userGateway;
+&nbsp;    private final PedidoGateway pedidoGateway;
+&nbsp;
+<b class="fc">&nbsp;    public PedidoUseCase(EstoqueGateway estoqueGateway, UserGateway userGateway, PedidoGateway pedidoGateway) {</b>
+<b class="fc">&nbsp;        this.estoqueGateway = estoqueGateway;</b>
+<b class="fc">&nbsp;        this.userGateway = userGateway;</b>
+<b class="fc">&nbsp;        this.pedidoGateway = pedidoGateway;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Object menuOpcionais() {
+<b class="fc">&nbsp;        return pedidoGateway.menuOpcionais();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public AcompanhamentoResponseDTO pedido(PedidoRequest request) {
+&nbsp;
+<b class="fc">&nbsp;        Pedido pedido = new Pedido();</b>
+&nbsp;
+<b class="fc">&nbsp;        List&lt;Item&gt; itensPedido = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        Set&lt;Produto&gt; deleteProdutos = new HashSet&lt;&gt;();</b>
+<b class="fc">&nbsp;        AcompanhamentoResponseDTO pedidoResponse = new AcompanhamentoResponseDTO();</b>
+&nbsp;
+&nbsp;        try {
+<b class="fc">&nbsp;            Cliente cliente = (Cliente) userGateway.usuarioById(request.getIdCliente());</b>
+&nbsp;
+<b class="nc">&nbsp;            if (cliente.getId() == null) {</b>
+<b class="nc">&nbsp;                log.info(&quot;CLIENTE NÃO ENCONTRADO/LOGADO&quot;);</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            pedido.setIdCliente(cliente.getId());</b>
+<b class="nc">&nbsp;            request.getItensPedido().forEach(item -&gt; {</b>
+&nbsp;
+<b class="nc">&nbsp;                Produto prod = estoqueGateway.findById(item.getIdProduto());</b>
+&nbsp;
+<b class="nc">&nbsp;                if (prod.getId() != null) {</b>
+<b class="nc">&nbsp;                    pedido.setTotal(pedido.getTotal().add(prod.getPreco()));</b>
+&nbsp;
+<b class="nc">&nbsp;                    Item itemPedido = new Item();</b>
+<b class="nc">&nbsp;                    itemPedido.setIdProduto(prod.getId());</b>
+<b class="nc">&nbsp;                    itemPedido.setNome(prod.getNome());</b>
+<b class="nc">&nbsp;                    itemPedido.setDescricao(prod.getDescricao());</b>
+<b class="nc">&nbsp;                    itemPedido.setCategoria(prod.getCategoria());</b>
+<b class="nc">&nbsp;                    itemPedido.setPreco(prod.getPreco());</b>
+<b class="nc">&nbsp;                    itemPedido.setImg(prod.getImg());</b>
+<b class="nc">&nbsp;                    itensPedido.add(itemPedido);</b>
+<b class="nc">&nbsp;                    deleteProdutos.add(prod);</b>
+&nbsp;                } else {
+<b class="nc">&nbsp;                    Item emFalta = new Item();</b>
+<b class="nc">&nbsp;                    emFalta.setPreco(BigDecimal.ZERO);</b>
+<b class="nc">&nbsp;                    emFalta.setImg(&quot;https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg&quot;);</b>
+<b class="nc">&nbsp;                    emFalta.setDescricao(&quot;produto em falta!&quot;);</b>
+<b class="nc">&nbsp;                    itensPedido.add(emFalta);</b>
+&nbsp;                }
+&nbsp;
+&nbsp;            });
+&nbsp;
+<b class="nc">&nbsp;            pedido.setDataPedido(new Date());</b>
+<b class="nc">&nbsp;            pedido.setStatus(Status.RECEBIDO);</b>
+<b class="nc">&nbsp;            pedido.setItensProdutos(itensPedido);</b>
+<b class="nc">&nbsp;            pedido.setIdCliente(request.getIdCliente());</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;            if (!pedido.getTotal().equals(BigDecimal.ZERO)) {</b>
+&nbsp;                //log.info(acompanhamentoGateway.sms(pedido.getStatus()));
+<b class="nc">&nbsp;                pedidoResponse = pedidoGateway.pedido(pedido);</b>
+<b class="nc">&nbsp;                estoqueGateway.deleteAll(deleteProdutos);</b>
+&nbsp;            } else {
+&nbsp;//            NotificacaoEntity notificacao = new NotificacaoEntity();
+&nbsp;//            notificacao.setDescricao(MESSAGE_ADM_ESTOQUE);
+&nbsp;//            notificacaoGateway.notifica(new Notificacao().entityfromDomain(notificacao));
+<b class="nc">&nbsp;                log.info(ITENS_EM_FALLTA);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        } catch (ClassCastException e){</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return pedidoResponse;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public AcompanhamentoResponseDTO atualizarPedido(PedidoRequest pedido) {
+<b class="nc">&nbsp;        Set&lt;Item&gt; itens = pedidoGateway.findAllByIdPedido(pedido.getId());</b>
+<b class="nc">&nbsp;        Cliente cliente = new Cliente();</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            cliente = (Cliente) userGateway.usuarioById(pedido.getIdCliente());</b>
+<b class="nc">&nbsp;        } catch (ClassCastException e){</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        Set&lt;Produto&gt; produtos = new HashSet&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        if (cliente.getId() == null &amp;&amp; produtos == null) {</b>
+<b class="nc">&nbsp;            throw new PedidoException(CLIENTE_NOT_FOUND);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        itens.forEach(item -&gt; {</b>
+<b class="nc">&nbsp;            Produto produto = new Produto();</b>
+<b class="nc">&nbsp;            produto.setId(item.getId());</b>
+<b class="nc">&nbsp;            produto.setNome(item.getNome());</b>
+<b class="nc">&nbsp;            produto.setDescricao(item.getDescricao());</b>
+<b class="nc">&nbsp;            produto.setCategoria(item.getCategoria());</b>
+<b class="nc">&nbsp;            produto.setPreco(item.getPreco());</b>
+<b class="nc">&nbsp;            produto.setImg(item.getImg());</b>
+<b class="nc">&nbsp;            produtos.add(produto);</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        estoqueGateway.repoemEstoque(produtos);</b>
+&nbsp;
+<b class="nc">&nbsp;        pedidoGateway.removeItens(itens);</b>
+<b class="nc">&nbsp;        Pedido pedidoRealizado = pedidoGateway.findByIdPedido(pedido.getId());</b>
+<b class="nc">&nbsp;        pedidoGateway.pedido(pedidoRealizado);</b>
+<b class="nc">&nbsp;        pedidoRealizado.setTotal(BigDecimal.ZERO);</b>
+<b class="nc">&nbsp;        pedidoGateway.commitUpdates(pedidoRealizado.domainFromEntity());</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        pedido.getItensPedido().forEach(item -&gt; {</b>
+<b class="nc">&nbsp;            Pedido pedidoDTO = pedidoGateway.findByIdPedido(pedido.getId());</b>
+<b class="nc">&nbsp;            pedidoDTO.setTotal(pedidoDTO.getTotal().add(item.getPreco()));</b>
+<b class="nc">&nbsp;            pedidoGateway.commitUpdates(pedidoDTO.domainFromEntity());</b>
+<b class="nc">&nbsp;            pedidoGateway.saveItens(item);</b>
+<b class="nc">&nbsp;            pedidoGateway.commitUpdates(pedidoDTO.domainFromEntity());</b>
+<b class="nc">&nbsp;            estoqueGateway.deleteByNome(item.getNome());</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        log.info(&quot;Pedido atualizado!&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        return pedidoGateway.atualizarPedido(pedidoGateway.findByIdPedido(pedido.getId()));</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void removeItens(Set&lt;Item&gt; itens) {
+<b class="fc">&nbsp;        pedidoGateway.removeItens(itens);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-01 15:35</div>
+</div>
+</body>
+</html>

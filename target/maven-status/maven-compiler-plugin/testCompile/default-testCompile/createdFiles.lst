@@ -1,0 +1,7 @@
+br\com\techchallenge\fiap\neighborfood\infrastructure\persistence\order\PedidoRepositoryTest.class
+br\com\techchallenge\fiap\neighborfood\infrastructure\persistence\user\ClienteRepositoryTest.class
+br\com\techchallenge\fiap\neighborfood\infrastructure\persistence\order\ProdutoRepositoryTest.class
+br\com\techchallenge\fiap\neighborfood\infrastructure\persistence\user\AdmRepositoryTest.class
+br\com\techchallenge\fiap\neighborfood\framework\web\PedidoControllerTest.class
+br\com\techchallenge\fiap\neighborfood\infrastructure\persistence\order\ItensRepositoryTest.class
+br\com\techchallenge\fiap\neighborfood\core\usecase\pedido\PedidoUseCaseTest.class
