@@ -15,7 +15,6 @@
     <description>neighborfood order</description>
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
-        <project.build.sourceEnconding>UTF-8</project.build.sourceEnconding>
     </properties>
     <dependencies>
 

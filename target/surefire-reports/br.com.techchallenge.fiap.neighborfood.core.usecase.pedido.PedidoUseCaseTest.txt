@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: br.com.techchallenge.fiap.neighborfood.core.usecase.pedido.PedidoUseCaseTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.37 s -- in br.com.techchallenge.fiap.neighborfood.core.usecase.pedido.PedidoUseCaseTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.24 s -- in br.com.techchallenge.fiap.neighborfood.core.usecase.pedido.PedidoUseCaseTest
