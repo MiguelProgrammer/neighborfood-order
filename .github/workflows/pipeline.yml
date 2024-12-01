@@ -54,14 +54,8 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Build with Maven
-        run: mvn clean install -U
-
-      - name: Run tests Integration test
+      - name: Run tests unit, mocks, Integration and systems
         run: mvn test -P integration-test
-
-      - name: Run tests unit, mocks
-        run: mvn test
 
   publish:
     runs-on: ubuntu-latest
