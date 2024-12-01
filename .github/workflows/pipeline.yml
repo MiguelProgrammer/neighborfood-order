@@ -22,9 +22,6 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Run Tests with JUnit and JaCoCo
-        run: mvn test jacoco:report
-
       - name: Publish JaCoCo Report
         if: success()  # Only run if previous steps succeeded
         run: |
