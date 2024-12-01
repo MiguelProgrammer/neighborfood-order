@@ -35,7 +35,6 @@ C:\Users\Miguel Silva\Documents\Pos\fase4\neighborfood-pedido\src\main\java\br\c
 C:\Users\Miguel Silva\Documents\Pos\fase4\neighborfood-pedido\src\main\java\br\com\techchallenge\fiap\neighborfood\core\domain\usuario\Usuario.java
 C:\Users\Miguel Silva\Documents\Pos\fase4\neighborfood-pedido\src\main\java\br\com\techchallenge\fiap\neighborfood\adapter\inbound\PedidoRequest.java
 C:\Users\Miguel Silva\Documents\Pos\fase4\neighborfood-pedido\src\main\java\br\com\techchallenge\fiap\neighborfood\config\exceptions\PedidoException.java
-C:\Users\Miguel Silva\Documents\Pos\fase4\neighborfood-pedido\src\main\java\br\com\techchallenge\fiap\neighborfood\framework\tools\CucumberTest.java
 C:\Users\Miguel Silva\Documents\Pos\fase4\neighborfood-pedido\src\main\java\br\com\techchallenge\fiap\neighborfood\core\domain\enums\Status.java
 C:\Users\Miguel Silva\Documents\Pos\fase4\neighborfood-pedido\src\main\java\br\com\techchallenge\fiap\neighborfood\core\domain\pedido\Produto.java
 C:\Users\Miguel Silva\Documents\Pos\fase4\neighborfood-pedido\src\main\java\br\com\techchallenge\fiap\neighborfood\infrastructure\persistence\order\ItensRepository.java
