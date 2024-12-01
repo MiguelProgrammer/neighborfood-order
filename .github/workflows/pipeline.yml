@@ -55,7 +55,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Run tests unit, mocks, Integration and systems
-        run: mvn test -P integration-test
+        run: mvn test -P system-test
 
   publish:
     runs-on: ubuntu-latest
