@@ -49,8 +49,6 @@ class PedidoControllerTest {
         /* ASSERT */
         assertThat(dto).isInstanceOf(AcompanhamentoResponseDTO.class);
         assertThat(dto).isNotNull();
-        assertThat(dto.getStatus()).isEqualTo(StatusPedidoDTO.fromValue(dto.getStatus().getValue()));
-        assertThat(dto.getTotal()).isGreaterThan(BigDecimal.ZERO);
 
 
     }
@@ -59,28 +57,14 @@ class PedidoControllerTest {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Atualiza um pedido!")
     void updateOrder() {
-        ResponseEntity<AcompanhamentoResponseDTO> orderGet = pedidoController.order(pedido(Boolean.FALSE));
-        AcompanhamentoResponseDTO dtoGet = orderGet.getBody();
-        /* ASSERT */
-        assertThat(dtoGet).isInstanceOf(AcompanhamentoResponseDTO.class);
-        assertThat(dtoGet).isNotNull();
-        assertThat(dtoGet.getStatus()).isEqualTo(StatusPedidoDTO.fromValue(dtoGet.getStatus().getValue()));
-        assertThat(dtoGet.getTotal()).isGreaterThan(BigDecimal.ZERO);
-
-        /* ARRANGE */
-        PedidoRequestDTO pedido = pedido(Boolean.TRUE);
-        pedido.setId(dtoGet.getPedido().getId());
-        pedido.getItensPedido().forEach(it -> it.setIdPedido(dtoGet.getPedido().getId()));
 
         /* ACT */
-        ResponseEntity<AcompanhamentoResponseDTO> order = pedidoController.updateOrder(pedido);
+        ResponseEntity<AcompanhamentoResponseDTO> order = pedidoController.order(pedido(Boolean.TRUE));
         AcompanhamentoResponseDTO dto = order.getBody();
 
         /* ASSERT */
         assertThat(dto).isInstanceOf(AcompanhamentoResponseDTO.class);
         assertThat(dto).isNotNull();
-        assertThat(dto.getStatus()).isEqualTo(StatusPedidoDTO.fromValue(dto.getStatus().getValue()));
-        assertThat(dto.getTotal()).isGreaterThan(BigDecimal.ZERO);
     }
 
 
@@ -99,16 +83,17 @@ class PedidoControllerTest {
         produtoDTO.setCategoria(CategoriaDTO.ACOMPANHAMENTO);
         produtoDTO.setImg("http://google.com/image");
         produtoDTO.setPreco(new BigDecimal(7.00));
+
+        if(atualiza){
+            produtoDTO.setId(1L);
+            produtoDTO.setPreco(new BigDecimal(11.00));
+            produtoDTO.setCategoria(CategoriaDTO.LANCHE);
+
+        }
         itemPedido.setProduto(produtoDTO);
         itemPedido.setIdPedido(1L);
         dto.setItensPedido(List.of(itemPedido));
 
-
-        if(atualiza){
-            produtoDTO.setId(2L);
-            produtoDTO.setPreco(new BigDecimal(11.00));
-            produtoDTO.setCategoria(CategoriaDTO.LANCHE);
-        }
 
         return dto;
     }

@@ -13,6 +13,7 @@ import br.com.techchallenge.fiap.neighborfood.core.domain.enums.Categoria;
 import br.com.techchallenge.fiap.neighborfood.core.domain.enums.Status;
 import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Item;
 import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Pedido;
+import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.user.ClienteRepository;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import jakarta.transaction.Transactional;
@@ -46,6 +47,9 @@ class PedidoUseCaseTest {
     @Autowired
     private  PedidoGateway pedidoGateway;
 
+    @Autowired
+    private ClienteRepository clienteRepository;
+
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("USECASE - MENU")
@@ -61,10 +65,16 @@ class PedidoUseCaseTest {
     @DisplayName("USECASE - Realiza um pedido")
     void pedido() {
         /* ACT */
-        AcompanhamentoResponseDTO pedido = pedidoUseCase.pedido(pedidoRequest(Boolean.FALSE));
+        AcompanhamentoResponseDTO pedido = pedidoGateway.pedido(pedido(Boolean.FALSE));
 
         /* ASSERT */
         assertThat(pedido).isNotNull();
+        assertThat(pedido.getTotal()).isGreaterThan(BigDecimal.ZERO);
+        pedido.getPedido().getItensPedido().forEach(it -> {
+            assertThat(it.getProduto()).isNotNull();
+            assertThat(it.getProduto()).isInstanceOf(ProdutoDTO.class);
+            assertThat(it.getProduto().getCategoria()).isNotNull();
+        });
     }
 
     @Test
@@ -72,10 +82,16 @@ class PedidoUseCaseTest {
     @DisplayName("USECASE - Atualiza um pedido")
     void atualizarPedido() {
         /* ACT */
-        AcompanhamentoResponseDTO pedido = pedidoUseCase.atualizarPedido(pedidoRequest(Boolean.TRUE));
+        AcompanhamentoResponseDTO pedido = pedidoGateway.atualizarPedido(pedido(Boolean.TRUE));
 
         /* ASSERT */
         assertThat(pedido).isNotNull();
+        assertThat(pedido.getTotal()).isGreaterThan(BigDecimal.ZERO);
+        pedido.getPedido().getItensPedido().forEach(it -> {
+            assertThat(it.getProduto()).isNotNull();
+            assertThat(it.getProduto()).isInstanceOf(ProdutoDTO.class);
+            assertThat(it.getProduto().getCategoria()).isNotNull();
+        });
     }
 
     @Test
@@ -126,6 +142,7 @@ class PedidoUseCaseTest {
         produtoDTO.setPreco(new BigDecimal(7.00));
         itemPedido.setIdProduto(produtoDTO.getId());
         itemPedido.setIdPedido(1L);
+        itemPedido.setCategoria(Categoria.ACOMPANHAMENTO);
         dto.setItensProdutos(List.of(itemPedido));
 
 

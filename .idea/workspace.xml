@@ -5,24 +5,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b98da9cc-1d07-4246-9de1-00a329614987" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/order/PedidoRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/order/ProdutoRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/user/AdmRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/gateways/UserGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/gateways/UserGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/MapperUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/MapperUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/config/template/TemplateNeighborfood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/config/template/TemplateNeighborfood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/estoque/AdmUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/estoque/EstoqueUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/estoque/EstoqueUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/AcompanhamentoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/AcompanhamentoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/config/beans/BeanConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/config/beans/BeanConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/framework/tools/CucumberTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/PedidoRepositoryGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/PedidoRepositoryGateway.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/UserRepositoryGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/UserRepositoryGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/order/ItensRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/order/ItensRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/order/ProdutoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/order/ProdutoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/user/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/user/ClienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/user/entities/AdminEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/user/entities/AdminEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/user/entities/ClienteEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/persistence/user/entities/ClienteEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/features/pedido.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/junit-platform.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/0035d341-56c0-4aac-9153-3e1fe78447ea-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/060c78da-e19e-4a9b-9a39-ccaab3177e00-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/0618d865-b329-4f3c-a513-50ea4db7de48-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/0dadd7d6-b417-4107-a54f-dba2d23cc834-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/129bcead-003e-4183-a515-965f02f12451-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/175a589c-7754-4611-b5ff-c5ce824c610f-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/32b157a4-a314-4c97-aa57-1b13b36b9571-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/3b3514f5-770b-4393-9a5f-768317f60420-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/3c4ab025-fe4f-4cf9-9baa-d9d395272ef5-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/3f1aad41-5eef-4e11-85c0-0cf1e3dba1b2-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/45fb6f9d-e8e2-4922-beaa-619e0e79b09b-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/471e0ce4-8fc4-4a2d-9512-7e0c930ee8c7-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/498c5542-ddb0-4e72-be75-b93fda7e7bc4-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/4fd46ecb-de03-40be-8f39-86a6cf6be3bb-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/59b87c63-a860-49ed-9227-ee8137c2406a-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/628730f4-36e1-42b3-b994-decb0785b87e-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/653cca92-238e-4423-ba0e-5d0622efbc68-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/667df285-8faa-4512-b3f0-4bd2d7687093-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/6b36047f-7fdf-441c-b053-b376ee2a621c-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/6bf80a6c-3ca4-43b0-8e8f-1b6f520aaa66-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/78254d6c-c827-43c4-a030-cf3b166ba083-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/785684db-0ebf-4c83-b492-5cafd68bd717-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/7b92302b-2435-4c4e-9af7-cdd6362db5b3-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/8a1e5e6c-c492-41f6-bf4e-4117ee79d847-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/8d52cb16-b75a-4259-9c05-90a5a5d127ef-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/927d37e0-6ace-4794-abf1-034b0780200f-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/934fd612-c294-4769-b6c2-04c10addf327-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/94350d1d-85be-4761-b04c-85a55fa22148-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/982d8357-08b9-451a-908e-b69e2e94beaf-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/b3a51aad-795c-4940-aa56-7aa4de93106b-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/b9321566-0452-4b2a-b0e4-ff487f1284e8-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/bc19893b-bea1-488a-9815-a07a741f0019-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/c3199613-f97e-45f9-a678-d95f7a749eed-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/d1d88af3-5fc8-48ee-ada8-0abc89c6d9ea-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/d1e5ac1d-6992-4dca-a34e-5d1de35adb88-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/dad7e040-e9d0-4635-8da2-380feb893909-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/dbdf36fe-e6b8-4fe8-82fb-f6a8650860c4-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/de3f2846-b034-48b0-a192-4718252a037c-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/e3c25b2a-abdd-4189-82c0-2394bf1d5a12-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/ebeac833-d37d-4023-8bfe-e364b4b611c8-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/ec785c5f-3598-43c9-8a0a-bbd1e5bb8f0e-container.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/pedido.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/junit-platform.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/.openapi-generator/FILES" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/.openapi-generator/FILES" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/_generated_sources_swagger_pedido/NeighborfoodApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/_generated_sources_swagger_pedido/NeighborfoodApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/br/com/techchallenge/fiap/neighborfood/core/domain/dto/AcompanhamentoResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/br/com/techchallenge/fiap/neighborfood/core/domain/dto/AcompanhamentoResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/br/com/techchallenge/fiap/neighborfood/core/domain/dto/CategoriaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/br/com/techchallenge/fiap/neighborfood/core/domain/dto/CategoriaDTO.java" afterDir="false" />
@@ -30,6 +73,7 @@
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/br/com/techchallenge/fiap/neighborfood/core/domain/dto/PedidoRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/br/com/techchallenge/fiap/neighborfood/core/domain/dto/PedidoRequestDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/br/com/techchallenge/fiap/neighborfood/core/domain/dto/ProdutoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/br/com/techchallenge/fiap/neighborfood/core/domain/dto/ProdutoDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/br/com/techchallenge/fiap/neighborfood/core/domain/dto/StatusPedidoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/br/com/techchallenge/fiap/neighborfood/core/domain/dto/StatusPedidoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/neighborfood.order-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/neighborfood.order-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +83,10 @@
   </component>
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\Miguel Silva\Documents\Pos\fase4\neighborfood-pedido\htmlReport" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -75,7 +123,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.NeighborfoodApp.executor": "Run",
+    "Application.NeighborfoodApp.executor": "Debug",
     "Application.NeighborfoodAppl.executor": "Run",
     "Downloaded.Files.Path.Enabled": "true",
     "JUnit.AdmRepositoryTest.findByCpf.executor": "Run",
@@ -84,13 +132,16 @@
     "JUnit.ClienteRepositoryTest.save.executor": "Run",
     "JUnit.ItensRepositoryTest.executor": "Run",
     "JUnit.PedidoControllerTest.menu.executor": "Run",
-    "JUnit.PedidoControllerTest.order.executor": "Debug",
-    "JUnit.PedidoControllerTest.updateOrder.executor": "Debug",
+    "JUnit.PedidoControllerTest.order.executor": "Run",
+    "JUnit.PedidoControllerTest.updateOrder.executor": "Run",
     "JUnit.PedidoRepositoryTest.save.executor": "Run",
+    "JUnit.PedidoUseCaseTest.atualizarPedido.executor": "Run",
     "JUnit.PedidoUseCaseTest.executor": "Run",
     "JUnit.PedidoUseCaseTest.menuOpcionais.executor": "Run",
-    "JUnit.PedidoUseCaseTest.pedido.executor": "Debug",
+    "JUnit.PedidoUseCaseTest.pedido.executor": "Run",
+    "JUnit.PedidoUseCaseTest.removeItens.executor": "Run",
     "JUnit.ProdutoRepositoryTest.deleteByNome.executor": "Run",
+    "JUnit.br.com.techchallenge.fiap.neighborfood in order.executor": "Run",
     "JavaScript Debug.index.html.executor": "Run",
     "Maven.neighborfood [clean,install,-U...].executor": "Debug",
     "Maven.neighborfood [clean,install,-U].executor": "Run",
@@ -103,6 +154,8 @@
     "Maven.neighborfood [site].executor": "Run",
     "Maven.neighborfood.order [clean,install,-U].executor": "Run",
     "Maven.neighborfood.order [clean,install,-X].executor": "Run",
+    "Maven.neighborfood.order [test,-P,system-test].executor": "Run",
+    "Maven.neighborfood.order [test,-P...].executor": "Run",
     "Notification.DisplayName-DoNotAsk-Database detector": "Database detector",
     "Notification.DoNotAsk-Database detector": "true",
     "OpenRewrite.UpgradeSpringBoot_3_2.executor": "Run",
@@ -177,8 +230,10 @@
       <recent name="br.com.techchallenge.fiap.neighborfood.adapters.outbound.repository.jpa" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PedidoUseCaseTest.pedido">
+  <component name="RunManager" selected="JUnit.br.com.techchallenge.fiap.neighborfood in order">
     <configuration name="NeighborfoodApp" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="br.com.techchallenge.fiap.neighborfood.NeighborfoodApplication" />
       <module name="order" />
       <extension name="net.ashald.envfile">
@@ -232,7 +287,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PedidoUseCaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PedidoUseCaseTest.atualizarPedido" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="order" />
       <extension name="coverage">
         <pattern>
@@ -242,28 +297,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="br.com.techchallenge.fiap.neighborfood.core.usecase.pedido" />
       <option name="MAIN_CLASS_NAME" value="br.com.techchallenge.fiap.neighborfood.core.usecase.pedido.PedidoUseCaseTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PedidoUseCaseTest.menuOpcionais" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="order" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="br.com.techchallenge.fiap.neighborfood.core.usecase.pedido.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="br.com.techchallenge.fiap.neighborfood.core.usecase.pedido" />
-      <option name="MAIN_CLASS_NAME" value="br.com.techchallenge.fiap.neighborfood.core.usecase.pedido.PedidoUseCaseTest" />
-      <option name="METHOD_NAME" value="menuOpcionais" />
+      <option name="METHOD_NAME" value="atualizarPedido" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PedidoUseCaseTest.pedido" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PedidoUseCaseTest.removeItens" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="order" />
       <extension name="coverage">
         <pattern>
@@ -273,19 +313,41 @@
       </extension>
       <option name="PACKAGE_NAME" value="br.com.techchallenge.fiap.neighborfood.core.usecase.pedido" />
       <option name="MAIN_CLASS_NAME" value="br.com.techchallenge.fiap.neighborfood.core.usecase.pedido.PedidoUseCaseTest" />
-      <option name="METHOD_NAME" value="pedido" />
+      <option name="METHOD_NAME" value="removeItens" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="br.com.techchallenge.fiap.neighborfood in order" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="order" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.techchallenge.fiap.neighborfood.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="br.com.techchallenge.fiap.neighborfood" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.NeighborfoodApp" />
+      <item itemvalue="JUnit.PedidoControllerTest.order" />
+      <item itemvalue="JUnit.PedidoControllerTest.updateOrder" />
+      <item itemvalue="JUnit.PedidoUseCaseTest.atualizarPedido" />
+      <item itemvalue="JUnit.PedidoUseCaseTest.removeItens" />
+      <item itemvalue="JUnit.br.com.techchallenge.fiap.neighborfood in order" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PedidoUseCaseTest.pedido" />
-        <item itemvalue="JUnit.PedidoUseCaseTest.menuOpcionais" />
-        <item itemvalue="JUnit.PedidoUseCaseTest" />
+        <item itemvalue="JUnit.br.com.techchallenge.fiap.neighborfood in order" />
         <item itemvalue="JUnit.PedidoControllerTest.updateOrder" />
         <item itemvalue="JUnit.PedidoControllerTest.order" />
+        <item itemvalue="JUnit.PedidoUseCaseTest.removeItens" />
+        <item itemvalue="JUnit.PedidoUseCaseTest.atualizarPedido" />
       </list>
     </recent_temporary>
   </component>
@@ -432,17 +494,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/AcompanhamentoResponse.java</url>
-          <line>108</line>
+          <line>109</line>
           <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/AcompanhamentoResponse.java</url>
-          <line>109</line>
+          <line>110</line>
           <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/AcompanhamentoResponse.java</url>
-          <line>110</line>
+          <line>111</line>
           <option name="timeStamp" value="170" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -452,17 +514,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
-          <line>140</line>
+          <line>151</line>
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
-          <line>143</line>
+          <line>154</line>
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
-          <line>145</line>
+          <line>156</line>
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -472,7 +534,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
-          <line>150</line>
+          <line>161</line>
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -537,12 +599,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/PedidoRepositoryGateway.java</url>
-          <line>89</line>
+          <line>90</line>
           <option name="timeStamp" value="293" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/PedidoRepositoryGateway.java</url>
-          <line>41</line>
+          <line>42</line>
           <option name="timeStamp" value="298" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -607,52 +669,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoControllerTest.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="319" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoControllerTest.java</url>
           <line>50</line>
           <option name="timeStamp" value="320" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoControllerTest.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="323" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoControllerTest.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="324" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoControllerTest.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="325" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/framework/web/PedidoControllerTest.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="326" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
-          <line>105</line>
+          <line>111</line>
           <option name="timeStamp" value="327" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/PedidoRepositoryGateway.java</url>
-          <line>148</line>
+          <line>149</line>
           <option name="timeStamp" value="328" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCaseTest.java</url>
-          <line>55</line>
+          <line>59</line>
           <option name="timeStamp" value="330" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/PedidoRepositoryGateway.java</url>
-          <line>42</line>
+          <line>43</line>
           <option name="timeStamp" value="331" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -672,18 +709,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCaseTest.java</url>
-          <line>63</line>
+          <line>67</line>
           <option name="timeStamp" value="337" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCaseTest.java</url>
-          <line>66</line>
+          <line>70</line>
           <option name="timeStamp" value="338" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/PedidoRepositoryGateway.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="339" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/AcompanhamentoResponse.java</url>
@@ -701,15 +733,54 @@
           <option name="timeStamp" value="342" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCaseTest.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="344" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/UserRepositoryGateway.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="345" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="347" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/PedidoRepositoryGateway.java</url>
           <line>49</line>
-          <option name="timeStamp" value="343" />
+          <option name="timeStamp" value="348" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/adapter/presenter/AcompanhamentoResponse.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="350" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCase.java</url>
+          <line>124</line>
+          <option name="timeStamp" value="352" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/infrastructure/gateways/PedidoRepositoryGateway.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="356" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/techchallenge/fiap/neighborfood/config/template/TemplateNeighborfood.java</url>
           <line>20</line>
           <properties field="moduleNeighborfood" class="br.com.techchallenge.fiap.neighborfood.config.template.TemplateNeighborfood" />
           <option name="timeStamp" value="333" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/br/com/techchallenge/fiap/neighborfood/core/usecase/pedido/PedidoUseCaseTest.java</url>
+          <line>65</line>
+          <properties class="br.com.techchallenge.fiap.neighborfood.core.usecase.pedido.PedidoUseCaseTest" method="pedido">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="351" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -722,5 +793,10 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/neighborfood_pedido$br_com_techchallenge_fiap_neighborfood_in_order.ic" NAME="br.com.techchallenge.fiap.neighborfood in order Coverage Results" MODIFIED="1733076222987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>br.com.techchallenge.fiap.neighborfood.*</FILTER>
+    </SUITE>
   </component>
 </project>

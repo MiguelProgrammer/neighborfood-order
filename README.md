@@ -1,27 +1,16 @@
 <h2>Module Order of Neighborfood Application - Clean Architecture</h2>
 
 # Allure Report dashboard
-* <img src="https://i.imgur.com/Tjj112t.png">
-
-# Cucumber
-* <img src="https://i.imgur.com/wjaUkJq.png">
-* <img src="https://i.imgur.com/mjtElYc.png">
+* <img src="https://i.imgur.com/0NUnUQo.png">
 
 # jUnit & Mockito
-* <img src="https://i.imgur.com/0ZVGptE.png">
-* <img src="https://i.imgur.com/T8PrlVV.png">
+* <img src="https://i.imgur.com/zuEhqf4.png">
+* <img src="https://i.imgur.com/C43xyo9.png">
 
-# Jacoco Report
-* <img src="https://i.imgur.com/gFB7Xqc.png"> 
-
-# Profiles test unit and integration
+# Profiles test unit, integration and systems
 ```
 mvn -P integration-test
 ```
-
-# Profiles test system
-```
-mvn -P system-test
 
 <h3>Project aims to refactor the architecture used in the project <a href="https://github.com/MiguelProgrammer/neighborfood">Neighborfood - Ports and Adapters</h3><hr>
 

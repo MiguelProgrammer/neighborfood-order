@@ -45,4 +45,3 @@ br\com\techchallenge\fiap\neighborfood\infrastructure\gateways\PedidoRepositoryG
 br\com\techchallenge\fiap\neighborfood\infrastructure\persistence\user\ClienteRepository.class
 br\com\techchallenge\fiap\neighborfood\config\template\TemplateNeighborfood.class
 br\com\techchallenge\fiap\neighborfood\infrastructure\gateways\EstoqueRepositoryGateway.class
-br\com\techchallenge\fiap\neighborfood\framework\tools\CucumberTest.class

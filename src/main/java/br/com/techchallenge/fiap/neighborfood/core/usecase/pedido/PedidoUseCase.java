@@ -51,52 +51,58 @@ public class PedidoUseCase {
         Set<Produto> deleteProdutos = new HashSet<>();
         AcompanhamentoResponseDTO pedidoResponse = new AcompanhamentoResponseDTO();
 
-        if (userGateway.usuarioById(request.getIdCliente()).getId() == null) {
-            log.info("CLIENTE NÃO ENCONTRADO/LOGADO");
-        }
+        try {
+            Cliente cliente = (Cliente) userGateway.usuarioById(request.getIdCliente());
 
-        pedido.setIdCliente(userGateway.usuarioById(request.getIdCliente()).getId());
-        request.getItensPedido().forEach(item -> {
-
-            Produto prod = estoqueGateway.findById(item.getIdProduto());
-
-            if (prod.getId() != null) {
-                pedido.setTotal(pedido.getTotal().add(prod.getPreco()));
-
-                Item itemPedido = new Item();
-                itemPedido.setIdProduto(prod.getId());
-                itemPedido.setNome(prod.getNome());
-                itemPedido.setDescricao(prod.getDescricao());
-                itemPedido.setCategoria(prod.getCategoria());
-                itemPedido.setPreco(prod.getPreco());
-                itemPedido.setImg(prod.getImg());
-                itensPedido.add(itemPedido);
-                deleteProdutos.add(prod);
-            } else {
-                Item emFalta = new Item();
-                emFalta.setPreco(BigDecimal.ZERO);
-                emFalta.setImg("https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg");
-                emFalta.setDescricao("produto em falta!");
-                itensPedido.add(emFalta);
+            if (cliente.getId() == null) {
+                log.info("CLIENTE NÃO ENCONTRADO/LOGADO");
             }
 
-        });
+            pedido.setIdCliente(cliente.getId());
+            request.getItensPedido().forEach(item -> {
 
-        pedido.setDataPedido(new Date());
-        pedido.setStatus(Status.RECEBIDO);
-        pedido.setItensProdutos(itensPedido);
-        pedido.setIdCliente(request.getIdCliente());
+                Produto prod = estoqueGateway.findById(item.getIdProduto());
+
+                if (prod.getId() != null) {
+                    pedido.setTotal(pedido.getTotal().add(prod.getPreco()));
+
+                    Item itemPedido = new Item();
+                    itemPedido.setIdProduto(prod.getId());
+                    itemPedido.setNome(prod.getNome());
+                    itemPedido.setDescricao(prod.getDescricao());
+                    itemPedido.setCategoria(prod.getCategoria());
+                    itemPedido.setPreco(prod.getPreco());
+                    itemPedido.setImg(prod.getImg());
+                    itensPedido.add(itemPedido);
+                    deleteProdutos.add(prod);
+                } else {
+                    Item emFalta = new Item();
+                    emFalta.setPreco(BigDecimal.ZERO);
+                    emFalta.setImg("https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg");
+                    emFalta.setDescricao("produto em falta!");
+                    itensPedido.add(emFalta);
+                }
+
+            });
+
+            pedido.setDataPedido(new Date());
+            pedido.setStatus(Status.RECEBIDO);
+            pedido.setItensProdutos(itensPedido);
+            pedido.setIdCliente(request.getIdCliente());
 
 
-        if (!pedido.getTotal().equals(BigDecimal.ZERO)) {
-            //log.info(acompanhamentoGateway.sms(pedido.getStatus()));
-            pedidoResponse = pedidoGateway.pedido(pedido);
-            estoqueGateway.deleteAll(deleteProdutos);
-        } else {
+            if (!pedido.getTotal().equals(BigDecimal.ZERO)) {
+                //log.info(acompanhamentoGateway.sms(pedido.getStatus()));
+                pedidoResponse = pedidoGateway.pedido(pedido);
+                estoqueGateway.deleteAll(deleteProdutos);
+            } else {
 //            NotificacaoEntity notificacao = new NotificacaoEntity();
 //            notificacao.setDescricao(MESSAGE_ADM_ESTOQUE);
 //            notificacaoGateway.notifica(new Notificacao().entityfromDomain(notificacao));
-            log.info(ITENS_EM_FALLTA);
+                log.info(ITENS_EM_FALLTA);
+            }
+        } catch (ClassCastException e){
+
         }
 
         return pedidoResponse;
@@ -104,7 +110,12 @@ public class PedidoUseCase {
 
     public AcompanhamentoResponseDTO atualizarPedido(PedidoRequest pedido) {
         Set<Item> itens = pedidoGateway.findAllByIdPedido(pedido.getId());
-        Cliente cliente = (Cliente) userGateway.usuarioById(pedido.getIdCliente());
+        Cliente cliente = new Cliente();
+        try {
+            cliente = (Cliente) userGateway.usuarioById(pedido.getIdCliente());
+        } catch (ClassCastException e){
+
+        }
         Set<Produto> produtos = new HashSet<>();
 
         if (cliente.getId() == null && produtos == null) {

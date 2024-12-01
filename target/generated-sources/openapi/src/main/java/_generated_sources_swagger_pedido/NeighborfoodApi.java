@@ -33,7 +33,7 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-01T02:25:19.796000600-03:00[America/Sao_Paulo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-01T15:37:31.663851800-03:00[America/Sao_Paulo]")
 @Validated
 @Tag(name = "menu", description = "Apresenta os opcionais")
 public interface NeighborfoodApi {

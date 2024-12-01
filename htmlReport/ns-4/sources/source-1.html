@@ -1,0 +1,244 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > AcompanhamentoResponse</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">br.com.techchallenge.fiap.neighborfood.adapter.presenter</a>
+</div>
+
+<h1>Coverage Summary for Class: AcompanhamentoResponse (br.com.techchallenge.fiap.neighborfood.adapter.presenter)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AcompanhamentoResponse</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    23.1%
+  </span>
+  <span class="absValue">
+    (3/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    35.6%
+  </span>
+  <span class="absValue">
+    (26/73)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/*
+&nbsp; * Copyright (c) 2024. MiguelProgrammer
+&nbsp; */
+&nbsp;
+&nbsp;package br.com.techchallenge.fiap.neighborfood.adapter.presenter;
+&nbsp;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.adapter.inbound.PedidoRequest;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.dto.*;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Item;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.pedido.Pedido;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.PedidoEntity;
+&nbsp;
+&nbsp;import java.math.BigDecimal;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Set;
+&nbsp;
+&nbsp;public class AcompanhamentoResponse {
+&nbsp;
+&nbsp;    private PedidoRequest pedidoRequest;
+&nbsp;    private BigDecimal total;
+&nbsp;
+<b class="fc">&nbsp;    public AcompanhamentoResponse() {</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public AcompanhamentoResponse(PedidoRequest pedidoRequest, BigDecimal total) {</b>
+<b class="nc">&nbsp;        this.pedidoRequest = pedidoRequest;</b>
+<b class="nc">&nbsp;        this.total = total;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public AcompanhamentoResponseDTO pedidoFromResponse() {
+<b class="nc">&nbsp;        AcompanhamentoResponseDTO response = new AcompanhamentoResponseDTO();</b>
+<b class="nc">&nbsp;        PedidoRequestDTO requestDTO = new PedidoRequestDTO();</b>
+<b class="nc">&nbsp;        requestDTO.setIdCliente(this.pedidoRequest.getIdCliente());</b>
+<b class="nc">&nbsp;        List&lt;ItemPedido&gt; itemPedidoList = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        this.pedidoRequest.getItensPedido().forEach(item -&gt; {</b>
+&nbsp;
+<b class="nc">&nbsp;            ItemPedido itemPedido = new ItemPedido();</b>
+<b class="nc">&nbsp;            itemPedido.setId(item.getId());</b>
+<b class="nc">&nbsp;            itemPedido.setIdPedido(item.getIdPedido());</b>
+&nbsp;
+<b class="nc">&nbsp;            ProdutoDTO dto = new ProdutoDTO();</b>
+<b class="nc">&nbsp;            dto.setId(item.getId());</b>
+<b class="nc">&nbsp;            dto.setNome(item.getNome());</b>
+<b class="nc">&nbsp;            dto.setDescricao(item.getDescricao());</b>
+<b class="nc">&nbsp;            dto.setPreco(item.getPreco());</b>
+<b class="nc">&nbsp;            dto.setCategoria(CategoriaDTO.valueOf(item.getCategoria().toString()));</b>
+<b class="nc">&nbsp;            dto.setImg(item.getImg());</b>
+<b class="nc">&nbsp;            itemPedido.setProduto(dto);</b>
+<b class="nc">&nbsp;            itemPedidoList.add(itemPedido);</b>
+&nbsp;        });
+<b class="nc">&nbsp;        requestDTO.setItensPedido(itemPedidoList);</b>
+<b class="nc">&nbsp;        response.setPedido(requestDTO);</b>
+<b class="nc">&nbsp;        response.getPedido().setId(this.pedidoRequest.getId());</b>
+<b class="nc">&nbsp;        response.setTotal(this.total);</b>
+<b class="nc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public AcompanhamentoResponseDTO pedidoEntityFromResponse(PedidoEntity pedidoEntity) {
+<b class="fc">&nbsp;        AcompanhamentoResponseDTO response = new AcompanhamentoResponseDTO();</b>
+<b class="fc">&nbsp;        Set&lt;ItemPedido&gt; itensPedido = new HashSet&lt;&gt;();</b>
+<b class="fc">&nbsp;        itensPedido.forEach(item -&gt; item.setIdPedido(pedidoEntity.getId()));</b>
+<b class="fc">&nbsp;        PedidoRequestDTO request = new PedidoRequestDTO();</b>
+<b class="fc">&nbsp;        request.setIdCliente(pedidoEntity.getIdCliente());</b>
+&nbsp;
+<b class="fc">&nbsp;        pedidoEntity.getItensProdutos().forEach(item -&gt; {</b>
+<b class="fc">&nbsp;            ItemPedido item1 = new ItemPedido();</b>
+<b class="fc">&nbsp;            item1.setId(item.getId());</b>
+<b class="fc">&nbsp;            item1.setIdPedido(item.getIdPedido());</b>
+<b class="fc">&nbsp;            ProdutoDTO produtoDTO = new ProdutoDTO();</b>
+<b class="fc">&nbsp;            produtoDTO.setId(item.getIdProduto());</b>
+<b class="fc">&nbsp;            produtoDTO.setNome(item.getNome());</b>
+<b class="fc">&nbsp;            produtoDTO.setDescricao(item.getDescricao());</b>
+<b class="fc">&nbsp;            String cat = String.valueOf(item.getCategoria());</b>
+<b class="fc">&nbsp;            produtoDTO.setCategoria(CategoriaDTO.valueOf(cat));</b>
+<b class="fc">&nbsp;            produtoDTO.setPreco(item.getPreco());</b>
+<b class="fc">&nbsp;            produtoDTO.setImg(item.getImg());</b>
+<b class="fc">&nbsp;            item1.setProduto(produtoDTO);</b>
+<b class="fc">&nbsp;            itensPedido.add(item1);</b>
+&nbsp;        });
+<b class="fc">&nbsp;        request.setItensPedido(itensPedido.stream().toList());</b>
+<b class="fc">&nbsp;        response.setTotal(pedidoEntity.getTotal());</b>
+<b class="fc">&nbsp;        response.setPedido(request);</b>
+<b class="fc">&nbsp;        response.setStatus(StatusPedidoDTO.fromValue(pedidoEntity.getStatus().toString()));</b>
+<b class="fc">&nbsp;        request.setId(pedidoEntity.getId());</b>
+<b class="fc">&nbsp;        return response;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public PedidoRequest getPedidoRequest() {
+<b class="nc">&nbsp;        return pedidoRequest;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void convertPedidoRequest(PedidoRequest pedidoRequest) {
+<b class="nc">&nbsp;        this.pedidoRequest = pedidoRequest;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPedidoRequest(PedidoRequest pedidoRequest) {
+<b class="nc">&nbsp;        this.pedidoRequest = pedidoRequest;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public BigDecimal getTotal() {
+<b class="nc">&nbsp;        return total;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTotal(BigDecimal total) {
+<b class="nc">&nbsp;        this.total = total;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public PedidoRequest convertPedidoRequest(Pedido pedido) {
+<b class="nc">&nbsp;        PedidoRequest request = new PedidoRequest();</b>
+<b class="nc">&nbsp;        List&lt;Item&gt; itens = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        request.setId(pedido.getId());</b>
+<b class="nc">&nbsp;        request.setIdCliente(pedido.getIdCliente());</b>
+<b class="nc">&nbsp;        pedido.getItensProdutos().forEach(item -&gt; {</b>
+<b class="nc">&nbsp;            Item produto = new Item();</b>
+<b class="nc">&nbsp;            produto.setId(item.getId());</b>
+<b class="nc">&nbsp;            produto.setIdProduto(item.getIdProduto());</b>
+<b class="nc">&nbsp;            produto.setIdPedido(item.getIdPedido());</b>
+<b class="nc">&nbsp;            produto.setNome(item.getNome());</b>
+<b class="nc">&nbsp;            produto.setCategoria(item.getCategoria());</b>
+<b class="nc">&nbsp;            produto.setDescricao(item.getDescricao());</b>
+<b class="nc">&nbsp;            produto.setPreco(item.getPreco());</b>
+<b class="nc">&nbsp;            produto.setImg(item.getImg());</b>
+<b class="nc">&nbsp;            itens.add(produto);</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        request.setItensPedido(new HashSet&lt;&gt;(itens));</b>
+<b class="nc">&nbsp;        return request;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-01 15:35</div>
+</div>
+</body>
+</html>

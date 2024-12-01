@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Getter
@@ -18,13 +19,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "adm")
-@SequenceGenerator(name = "adm_sequence", initialValue = 1)
+@SequenceGenerator(name = "adm_sequence", initialValue = 10)
 public class AdminEntity implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
-    //@Setter(AccessLevel.PROTECTED)
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

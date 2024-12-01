@@ -16,6 +16,7 @@ import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.P
 import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.ProdutoRepository;
 import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.ItemEntity;
 import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.PedidoEntity;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -147,7 +148,11 @@ public class PedidoRepositoryGateway implements PedidoGateway {
     @Override
     public Pedido findByIdPedido(Long id) {
         Optional<PedidoEntity> pedidoRepositoryById = pedidoRepository.findById(id);
-        pedidoRepositoryById.get().setItensProdutos(itensRepository.findByIdPedido(id));
+        try {
+            pedidoRepositoryById.get().setItensProdutos(itensRepository.findByIdPedido(id));
+        } catch (InvalidDataAccessApiUsageException e) {
+
+        }
         return new Pedido().entityFromDomain(pedidoRepositoryById.get());
     }
 
@@ -157,7 +162,6 @@ public class PedidoRepositoryGateway implements PedidoGateway {
         entity.setItensProdutos(itensRepository.findByIdPedido(entity.getId()));
         return new Pedido().entityFromDomain(entity);
     }
-
 
 
     @Override

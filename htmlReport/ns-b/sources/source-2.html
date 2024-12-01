@@ -1,0 +1,295 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Pedido</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">br.com.techchallenge.fiap.neighborfood.core.domain.pedido</a>
+</div>
+
+<h1>Coverage Summary for Class: Pedido (br.com.techchallenge.fiap.neighborfood.core.domain.pedido)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Pedido</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    57.1%
+  </span>
+  <span class="absValue">
+    (16/28)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    32.5%
+  </span>
+  <span class="absValue">
+    (26/80)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package br.com.techchallenge.fiap.neighborfood.core.domain.pedido;/*
+&nbsp; * Copyright (c) 2024. MiguelProgrammer
+&nbsp; */
+&nbsp;
+&nbsp;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.enums.Status;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.ItemEntity;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.PedidoEntity;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.order.entities.ProdutoEntity;
+&nbsp;
+&nbsp;import java.math.BigDecimal;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;public class Pedido {
+&nbsp;
+&nbsp;    private Long id;
+&nbsp;    private Long idCliente;
+<b class="fc">&nbsp;    private List&lt;Item&gt; itensProdutos = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;    private BigDecimal total = BigDecimal.ZERO;</b>
+&nbsp;    private Status status;
+&nbsp;    private Date dataPedido;
+&nbsp;    private Date dataPedidoFim;
+&nbsp;
+<b class="fc">&nbsp;    public Pedido() {</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Pedido(Long id, Long idCliente, List&lt;Item&gt; itensProdutos, BigDecimal total, Status status, Date dataPedido, Date dataPedidoFim) {</b>
+<b class="nc">&nbsp;        this.id = id;</b>
+<b class="nc">&nbsp;        this.idCliente = idCliente;</b>
+<b class="nc">&nbsp;        this.itensProdutos = itensProdutos;</b>
+<b class="nc">&nbsp;        this.total = total;</b>
+<b class="nc">&nbsp;        this.status = status;</b>
+<b class="nc">&nbsp;        this.dataPedido = dataPedido;</b>
+<b class="nc">&nbsp;        this.dataPedidoFim = dataPedidoFim;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Long getId() {
+<b class="fc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setId(Long id) {
+<b class="fc">&nbsp;        this.id = id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Long getIdCliente() {
+<b class="fc">&nbsp;        return idCliente;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setIdCliente(Long idCliente) {
+<b class="fc">&nbsp;        this.idCliente = idCliente;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Item&gt; getItensProdutos() {
+<b class="fc">&nbsp;        return itensProdutos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setItensProdutos(List&lt;Item&gt; itensProdutos) {
+<b class="fc">&nbsp;        this.itensProdutos = itensProdutos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public BigDecimal getTotal() {
+<b class="fc">&nbsp;        return total;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTotal(BigDecimal total) {
+<b class="fc">&nbsp;        this.total = total;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Status getStatus() {
+<b class="fc">&nbsp;        return status;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setStatus(Status status) {
+<b class="fc">&nbsp;        this.status = status;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Date getDataPedido() {
+<b class="fc">&nbsp;        return dataPedido;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDataPedido(Date dataPedido) {
+<b class="fc">&nbsp;        this.dataPedido = dataPedido;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Date getDataPedidoFim() {
+<b class="fc">&nbsp;        return dataPedidoFim;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDataPedidoFim(Date dataPedidoFim) {
+<b class="nc">&nbsp;        this.dataPedidoFim = dataPedidoFim;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public PedidoEntity domainFromEntity() {
+<b class="fc">&nbsp;        PedidoEntity entity = new PedidoEntity();</b>
+<b class="fc">&nbsp;        entity.setId(this.id);</b>
+<b class="fc">&nbsp;        entity.setIdCliente(this.idCliente);</b>
+<b class="fc">&nbsp;        entity.setStatus(this.status);</b>
+<b class="fc">&nbsp;        entity.setDataPedido(this.dataPedido);</b>
+<b class="fc">&nbsp;        entity.setTotal(this.total);</b>
+<b class="fc">&nbsp;        entity.setDataPedidoFim(this.dataPedidoFim);</b>
+<b class="fc">&nbsp;        this.getItensProdutos().forEach(item -&gt; {</b>
+<b class="fc">&nbsp;            entity.getItensProdutos().add(item.itemDomainFromItemEntity());</b>
+&nbsp;        });
+<b class="fc">&nbsp;        return entity;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Pedido entityFromDomain(PedidoEntity entity) {
+<b class="nc">&nbsp;        Pedido domain = new Pedido();</b>
+&nbsp;
+<b class="nc">&nbsp;        domain.setId(entity.getId());</b>
+<b class="nc">&nbsp;        domain.setIdCliente(entity.getIdCliente());</b>
+<b class="nc">&nbsp;        domain.setStatus(entity.getStatus());</b>
+<b class="nc">&nbsp;        domain.setDataPedido(entity.getDataPedido());</b>
+<b class="nc">&nbsp;        domain.setTotal(entity.getTotal());</b>
+<b class="nc">&nbsp;        domain.setDataPedidoFim(entity.getDataPedidoFim());</b>
+<b class="nc">&nbsp;        entity.getItensProdutos().forEach(produtos -&gt; {</b>
+<b class="nc">&nbsp;            Item item = new Item();</b>
+<b class="nc">&nbsp;            item.setId(produtos.getId());</b>
+<b class="nc">&nbsp;            item.setIdPedido(produtos.getIdPedido());</b>
+<b class="nc">&nbsp;            item.setIdProduto(produtos.getIdProduto());</b>
+<b class="nc">&nbsp;            item.setNome(produtos.getNome());</b>
+<b class="nc">&nbsp;            item.setDescricao(produtos.getDescricao());</b>
+<b class="nc">&nbsp;            item.setCategoria(produtos.getCategoria());</b>
+<b class="nc">&nbsp;            item.setPreco(produtos.getPreco());</b>
+<b class="nc">&nbsp;            item.setImg(produtos.getImg());</b>
+<b class="nc">&nbsp;            domain.getItensProdutos().add(item);</b>
+&nbsp;        });
+<b class="nc">&nbsp;        return domain;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Set&lt;Item&gt; itemEntityFromItemDomain(ItemEntity itensProdutos) {
+<b class="nc">&nbsp;        Set&lt;Item&gt; itens = new HashSet&lt;&gt;();</b>
+<b class="nc">&nbsp;        Item item = new Item();</b>
+<b class="nc">&nbsp;        item.setId(itensProdutos.getId());</b>
+<b class="nc">&nbsp;        item.setIdPedido(itensProdutos.getIdPedido());</b>
+<b class="nc">&nbsp;        return itens;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ItemEntity itemDomainFromItemEntity(Item domain) {
+<b class="nc">&nbsp;        ItemEntity item = new ItemEntity();</b>
+<b class="nc">&nbsp;        item.setId(domain.getId());</b>
+<b class="nc">&nbsp;        item.setIdPedido(domain.getIdPedido());</b>
+<b class="nc">&nbsp;        item.setIdProduto(domain.getIdProduto());</b>
+<b class="nc">&nbsp;        item.setNome(domain.getNome());</b>
+<b class="nc">&nbsp;        item.setDescricao(domain.getDescricao());</b>
+<b class="nc">&nbsp;        item.setCategoria(domain.getCategoria());</b>
+<b class="nc">&nbsp;        item.setPreco(domain.getPreco());</b>
+<b class="nc">&nbsp;        item.setImg(domain.getImg());</b>
+<b class="nc">&nbsp;        return item;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private Set&lt;Produto&gt; setEntitiesToSetDomain(Set&lt;ProdutoEntity&gt; entities) {
+<b class="nc">&nbsp;        Set&lt;Produto&gt; produtos = new HashSet&lt;&gt;();</b>
+<b class="nc">&nbsp;        entities.forEach(produto -&gt; {</b>
+<b class="nc">&nbsp;            produtos.add(new Produto().entityFromDto(produto));</b>
+&nbsp;        });
+<b class="nc">&nbsp;        return produtos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private Set&lt;ProdutoEntity&gt; setDomainToSetEntity(Set&lt;Produto&gt; domains) {
+<b class="nc">&nbsp;        Set&lt;ProdutoEntity&gt; produtos = new HashSet&lt;&gt;();</b>
+<b class="nc">&nbsp;        domains.forEach(produto -&gt; {</b>
+<b class="nc">&nbsp;            produtos.add(produto.dtoFromEntity());</b>
+&nbsp;        });
+<b class="nc">&nbsp;        return produtos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;\n\n____________PEDIDO N* &quot; + id + &quot;____________\n\n&quot; +</b>
+&nbsp;                &quot;\nIDCLIENTE = &quot; + idCliente +
+&nbsp;                &quot;\nITENS = &quot; + itensProdutos +
+&nbsp;                &quot;\nTOTAL = &quot; + total +
+&nbsp;                &quot;\nSTATUS = &quot; + status +
+&nbsp;                &quot;\nDATA DO PEDIDO = &quot; + dataPedido +
+&nbsp;                &quot;\nDATA DE FINALIZAÇÃO PEDIDO = &quot; + dataPedidoFim +
+<b class="nc">&nbsp;                &quot;\nTEMPO DE ESPERA = &quot; + (dataPedidoFim.getMinutes() - dataPedido.getMinutes()) + &quot; Minutos.&quot; +</b>
+&nbsp;                &quot;\n____________PEDIDO N* &quot; + id + &quot;____________\n\n&quot;;
+&nbsp;    }
+&nbsp;
+&nbsp;    public String toStringAberto() {
+<b class="nc">&nbsp;        return &quot;\n\n____________PEDIDO N* &quot; + id + &quot;____________\n\n&quot; +</b>
+&nbsp;                &quot;\nIDCLIENTE = &quot; + idCliente +
+&nbsp;                &quot;\nITENS = &quot; + itensProdutos +
+&nbsp;                &quot;\nTOTAL = &quot; + total +
+&nbsp;                &quot;\nSTATUS = &quot; + status +
+&nbsp;                &quot;\nDATA DO PEDIDO = &quot; + dataPedido +
+&nbsp;                &quot;\n\n____________PEDIDO N* &quot; + id + &quot;____________\n\n&quot;;
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-01 15:35</div>
+</div>
+</body>
+</html>

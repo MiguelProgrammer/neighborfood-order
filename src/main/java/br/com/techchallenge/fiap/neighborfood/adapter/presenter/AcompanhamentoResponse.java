@@ -72,7 +72,8 @@ public class AcompanhamentoResponse {
             produtoDTO.setId(item.getIdProduto());
             produtoDTO.setNome(item.getNome());
             produtoDTO.setDescricao(item.getDescricao());
-            produtoDTO.setCategoria(CategoriaDTO.valueOf(String.valueOf(item.getCategoria())));
+            String cat = String.valueOf(item.getCategoria());
+            produtoDTO.setCategoria(CategoriaDTO.valueOf(cat));
             produtoDTO.setPreco(item.getPreco());
             produtoDTO.setImg(item.getImg());
             item1.setProduto(produtoDTO);

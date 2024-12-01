@@ -1,0 +1,183 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > UserRepositoryGateway</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">br.com.techchallenge.fiap.neighborfood.infrastructure.gateways</a>
+</div>
+
+<h1>Coverage Summary for Class: UserRepositoryGateway (br.com.techchallenge.fiap.neighborfood.infrastructure.gateways)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserRepositoryGateway</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (3/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (2/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (10/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/*
+&nbsp; * Copyright (c) 2024. MiguelProgrammer
+&nbsp; */
+&nbsp;
+&nbsp;package br.com.techchallenge.fiap.neighborfood.infrastructure.gateways;
+&nbsp;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.adapter.gateways.UserGateway;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.adapter.presenter.MapperUser;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.core.domain.usuario.Usuario;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.user.AdmRepository;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.user.ClienteRepository;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.user.entities.AdminEntity;
+&nbsp;import br.com.techchallenge.fiap.neighborfood.infrastructure.persistence.user.entities.ClienteEntity;
+&nbsp;import org.springframework.stereotype.Component;
+&nbsp;
+&nbsp;import java.util.Optional;
+&nbsp;
+&nbsp;@Component
+&nbsp;public class UserRepositoryGateway implements UserGateway {
+&nbsp;
+&nbsp;    private final AdmRepository admRepository;
+&nbsp;    private final ClienteRepository clienteRepository;
+<b class="fc">&nbsp;    private MapperUser mapperUser = new MapperUser();</b>
+&nbsp;
+<b class="fc">&nbsp;    public UserRepositoryGateway(AdmRepository admRepository, ClienteRepository clienteRepository) {</b>
+<b class="fc">&nbsp;        this.admRepository = admRepository;</b>
+<b class="fc">&nbsp;        this.clienteRepository = clienteRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Usuario usuarioById(Long idUsuario) {
+<b class="fc">&nbsp;        return this.getUsuarioPorId(idUsuario);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Usuario usuarioByCpf(String cpf) {
+<b class="nc">&nbsp;        return this.getUsuarioPorCpf(cpf);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private Usuario getUsuarioPorCpf(String cpf) {
+<b class="nc">&nbsp;        ClienteEntity cliente = clienteRepository.findByCpf(cpf);</b>
+<b class="nc">&nbsp;        if (cliente == null) {</b>
+<b class="nc">&nbsp;            AdminEntity usuario = admRepository.findByCpf(cpf);</b>
+<b class="nc">&nbsp;            return usuario != null ? mapperUser.fromModel(usuario) : new Usuario();</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return mapperUser.fromModel(cliente);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private Usuario getUsuarioPorId(Long idUsuario) {
+&nbsp;
+<b class="fc">&nbsp;        Optional&lt;ClienteEntity&gt; byId = clienteRepository.findById(idUsuario);</b>
+&nbsp;
+&nbsp;        try {
+<b class="pc">&nbsp;            if (byId.isEmpty()) {</b>
+<b class="fc">&nbsp;                Optional&lt;AdminEntity&gt; admin = admRepository.findById(idUsuario);</b>
+<b class="pc">&nbsp;                if (!admin.isEmpty()) {</b>
+<b class="nc">&nbsp;                    return mapperUser.fromModel(admin.get());</b>
+&nbsp;                }
+<b class="fc">&nbsp;                return new Usuario();</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } catch (Exception e){</b>
+<b class="nc">&nbsp;            System.err.println(e);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return mapperUser.fromModel(byId.get());</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-01 15:35</div>
+</div>
+</body>
+</html>
