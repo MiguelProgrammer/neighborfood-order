@@ -57,5 +57,4 @@ public class UserRepositoryGateway implements UserGateway {
         }
         return mapperUser.fromModel(cliente.get());
     }
-
 }

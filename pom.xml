@@ -15,12 +15,20 @@
     <description>neighborfood order</description>
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEnconding>UTF-8</project.build.sourceEnconding>
     </properties>
     <dependencies>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>3.2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.8.0</version>
         </dependency>
 
         <dependency>
@@ -34,14 +42,12 @@
             <groupId>org.springframework.boot</groupId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>6.1.0</version>
             <scope>provided</scope>
         </dependency>
-
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -67,7 +73,6 @@
             <version>3.0.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -78,6 +83,130 @@
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
             <version>0.2.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.24.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <version>3.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- para testar controller de forma mais fluida -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
+            <version>5.3.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>5.3.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-api</artifactId>
+            <version>1.10.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- cucumber -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>7.13.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.4.0</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>2.23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.20.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>6.1.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>5.10.3</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit5 -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>2.29.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-api</artifactId>
         </dependency>
 
     </dependencies>
@@ -137,11 +266,109 @@
                             </typeMappings>
                         </configuration>
                     </execution>
-
-
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+                <configuration>
+                    <includes combine.self="override">
+                        <include>**/CucumberTest.java</include>
+                    </includes>
+                    <excludes combine.self="override">
+                    </excludes>
+                    <properties>
+                        <configurationParameters>
+                            cucumber.junit-platform.naming-strategy=long
+                        </configurationParameters>
+                    </properties>
+                </configuration>
+            </plugin>
+
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.8</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>system-test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.1.2</version>
+                        <configuration>
+                            <includes>
+                                <include combine.self="override">
+                                    **/*Test
+                                </include>
+                                <excludes combine.self="override">
+                                </excludes>
+                                <properties>
+                                    <junit.jupiter.extesions.autodetect.enabled>
+                                        true
+                                    </junit.jupiter.extesions.autodetect.enabled>
+                                </properties>
+                            </includes>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.aspectj</groupId>
+                                <artifactId>aspectjweaver</artifactId>
+                                <version>${aspectj.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>integration-test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.1.2</version>
+                        <configuration>
+                            <includes>
+                                <include>
+                                    **/*CucumberTest.java
+                                </include>
+                            </includes>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.aspectj</groupId>
+                                <artifactId>aspectjweaver</artifactId>
+                                <version>${aspectj.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

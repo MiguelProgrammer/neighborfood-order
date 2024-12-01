@@ -40,7 +40,8 @@ public class PedidoRepositoryGateway implements PedidoGateway {
 
     @Override
     public Object menuOpcionais() {
-        return neighborfood.menu().getBody();
+        Object body = neighborfood.menu().getBody();
+        return body;
     }
 
     @Override

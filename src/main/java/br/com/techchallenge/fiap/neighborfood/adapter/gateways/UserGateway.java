@@ -11,5 +11,4 @@ public interface UserGateway {
 
     Usuario usuarioById(Long idCliente);
     Usuario usuarioByCpf(String cpf);
-
 }

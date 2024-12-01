@@ -51,13 +51,11 @@ public class PedidoUseCase {
         Set<Produto> deleteProdutos = new HashSet<>();
         AcompanhamentoResponseDTO pedidoResponse = new AcompanhamentoResponseDTO();
 
-        Cliente cliente = (Cliente) userGateway.usuarioById(request.getIdCliente());
-
-        if (cliente.getId() == null) {
+        if (userGateway.usuarioById(request.getIdCliente()).getId() == null) {
             log.info("CLIENTE NÃO ENCONTRADO/LOGADO");
         }
 
-        pedido.setIdCliente(cliente.getId());
+        pedido.setIdCliente(userGateway.usuarioById(request.getIdCliente()).getId());
         request.getItensPedido().forEach(item -> {
 
             Produto prod = estoqueGateway.findById(item.getIdProduto());
@@ -152,4 +150,6 @@ public class PedidoUseCase {
     public void removeItens(Set<Item> itens) {
         pedidoGateway.removeItens(itens);
     }
+
+
 }
